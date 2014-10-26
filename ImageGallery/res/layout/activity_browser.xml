@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:text="@string/hello_world"
+        android:onClick="open" />
+
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/image"
+        android:text="@string/previous"
+        android:onClick="previous" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/image"
+        android:layout_marginLeft="52dp"
+        android:text="@string/next"
+        android:onClick="next" />
+
+</RelativeLayout>
