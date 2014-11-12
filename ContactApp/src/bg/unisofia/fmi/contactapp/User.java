@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class User implements Parcelable{
 	
-	public static final String KEY = User.class.getSimpleName();
+	public static final String KEY = User.class.getSimpleName() + '2';
 	
 	private String mUsername;
 	private String mPassword;

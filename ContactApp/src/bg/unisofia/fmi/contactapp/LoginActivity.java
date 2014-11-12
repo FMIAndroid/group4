@@ -72,7 +72,7 @@ public class LoginActivity extends Activity {
 		if(mCurrentUser.getUsername().equals(mUsernameEditText.getText().toString()) &&
 			 mCurrentUser.getPassword().equals(mPasswordEditText.getText().toString())) {
 			final Intent intent = new Intent(this, ContactActivity.class);
-			intent.getExtras().putParcelable(User.KEY, mCurrentUser);
+			intent.putExtra(User.KEY, mCurrentUser);
 			startActivity(intent);
 		}
 	}
