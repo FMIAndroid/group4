@@ -1,7 +1,5 @@
 package bg.unisofia.fmi.contactapp;
 
-import java.util.Arrays;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +13,6 @@ public class LoginActivity extends Activity {
 
 	private Button mLoginButton;
 	private Button mRegisterButton;
-	private SharedPreferences mPreferences;
 	private EditText mUsernameEditText;
 	private EditText mPasswordEditText;
 	private User mCurrentUser;
@@ -47,6 +44,7 @@ public class LoginActivity extends Activity {
 		} else {
 			final Parcel parcel = Parcel.obtain();
 			parcel.unmarshall(userString.getBytes(), 0, userString.getBytes().length);
+			parcel.setDataPosition(0);
 			final User user = new User(parcel);
 			parcel.recycle();
 			return user;
@@ -57,7 +55,7 @@ public class LoginActivity extends Activity {
 		final SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		final Parcel parcel = Parcel.obtain();
 		user.writeToParcel(parcel, 0);
-		final String userString = Arrays.toString(parcel.marshall());
+		final String userString = new String(parcel.marshall());
 		preferences.edit().putString(User.KEY, userString).commit();
 		parcel.recycle();
 	}
