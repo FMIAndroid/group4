@@ -1,5 +1,6 @@
 package bg.unisofia.fmi.contactapp;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 public class ContactActivity extends Activity implements OnLongClickListener {
 
@@ -49,7 +53,6 @@ public class ContactActivity extends Activity implements OnLongClickListener {
 			startActivityForResult(phonePickerIntent, PICK_PHONE);
 			break;
 		}
-		;
 		return true;
 	}
 

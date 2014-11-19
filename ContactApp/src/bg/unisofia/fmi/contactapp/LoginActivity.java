@@ -1,21 +1,29 @@
 package bg.unisofia.fmi.contactapp;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcel;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.stmt.QueryBuilder;
+
 public class LoginActivity extends Activity {
 
+	private static final String TAG = LoginActivity.class.getSimpleName();
+	
 	private Button mLoginButton;
 	private Button mRegisterButton;
 	private EditText mUsernameEditText;
 	private EditText mPasswordEditText;
 	private User mCurrentUser;
+	private DatabaseHelper mDatabaseHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +33,9 @@ public class LoginActivity extends Activity {
 		mRegisterButton = (Button) findViewById(R.id.registerButton);
 		mUsernameEditText = (EditText) findViewById(R.id.usernameEditText);
 		mPasswordEditText = (EditText) findViewById(R.id.passwordEditText);
-		mCurrentUser = readUser();
+		mDatabaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+		// getPreferences(MODE_PRIVATE).edit().remove(User.KEY).commit();
+		mCurrentUser = readUser(getPreferences(MODE_PRIVATE).getInt(User.KEY, -1));
 	}
 	
 	private void updateUI() {
@@ -36,28 +46,27 @@ public class LoginActivity extends Activity {
 		}
 	}
 	
-	private User readUser() {
-		final SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-		final String userString = preferences.getString(User.KEY, null);
-		if(userString == null) {
-			return null;
-		} else {
-			final Parcel parcel = Parcel.obtain();
-			parcel.unmarshall(userString.getBytes(), 0, userString.getBytes().length);
-			parcel.setDataPosition(0);
-			final User user = new User(parcel);
-			parcel.recycle();
-			return user;
-		}
+	private User readUser(int id) {
+		return mDatabaseHelper.getUserDao().queryForId(id);
 	}
 	
-	private void writeUser(User user) {
-		final SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-		final Parcel parcel = Parcel.obtain();
-		user.writeToParcel(parcel, 0);
-		final String userString = new String(parcel.marshall());
-		preferences.edit().putString(User.KEY, userString).commit();
-		parcel.recycle();
+	private User findUser(String username) {
+		QueryBuilder<User, Integer> queryBuilder =
+		  mDatabaseHelper.getUserDao().queryBuilder();
+		List<User> results = null;
+		try {
+			queryBuilder.where().eq("username",
+				    username);
+			results = queryBuilder.query();
+		} catch (SQLException e) {
+			Log.e(TAG, e.getMessage(), e);
+			throw new RuntimeException(e);
+		}
+		return results.isEmpty() ? null : results.get(0);
+	}
+	
+	private boolean writeUser(User user) {
+		return mDatabaseHelper.getUserDao().create(user) == 1;
 	}
 	
 	@Override
@@ -67,10 +76,11 @@ public class LoginActivity extends Activity {
 	}
 
 	public void login(View view) {
-		if(mCurrentUser.getUsername().equals(mUsernameEditText.getText().toString()) &&
-			 mCurrentUser.getPassword().equals(mPasswordEditText.getText().toString())) {
+		User user = findUser(mUsernameEditText.getText().toString());
+		if(user != null && user.getPassword().equals(mPasswordEditText.getText().toString())) {
+			setCurrentUser(user);
 			final Intent intent = new Intent(this, ContactActivity.class);
-			intent.putExtra(User.KEY, mCurrentUser);
+			intent.putExtra(User.KEY, mCurrentUser.getId());
 			startActivity(intent);
 		}
 	}
@@ -81,7 +91,13 @@ public class LoginActivity extends Activity {
 		user.setPassword(mPasswordEditText.getText().toString());
 		mCurrentUser = user;
 		writeUser(user);
+		setCurrentUser(user);
 		onRegistered();
+	}
+	
+	private void setCurrentUser(User user) {
+		mCurrentUser = user;
+		getPreferences(MODE_PRIVATE).edit().putInt(User.KEY, user.getId()).commit();
 	}
 	
 	private boolean isRegistered() {
@@ -96,5 +112,12 @@ public class LoginActivity extends Activity {
 	private void onRegistered() {
 		mRegisterButton.setVisibility(View.GONE);
 		mLoginButton.setVisibility(View.VISIBLE);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		OpenHelperManager.releaseHelper();
+		mDatabaseHelper = null;
 	}
 }

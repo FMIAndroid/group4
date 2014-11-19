@@ -1,81 +1,65 @@
 package bg.unisofia.fmi.contactapp;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-public class User implements Parcelable{
+@DatabaseTable(tableName = "users")
+public class User {
 	
-	public static final String KEY = User.class.getSimpleName() + "10";
+	public static final String KEY = User.class.getSimpleName();
 	
-	private String mUsername;
-	private String mPassword;
-	private String mPhone;
-	private String mEmail;
+	@DatabaseField(generatedId = true, columnName = "_id")
+	private int id;
 	
-	public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
-		public User createFromParcel(Parcel in) {
-		    return new User(in);
-		}
-
-		public User[] newArray(int size) {
-		    return new User[size];
-		}
-	};
+	@DatabaseField
+	private String username;
+	
+	@DatabaseField
+	private String password;
+	
+	@DatabaseField
+	private String phone;
+	
+	@DatabaseField
+	private String email;
 	
 	public User() {
-		
-	}
-
-	public User(Parcel in) {
-		setUsername(in.readString());
-		setPassword(in.readString());
-		setPhone(in.readString());
-		setEmail(in.readString());
 	}
 	
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(getUsername());
-		dest.writeString(getPassword());
-		dest.writeString(getPhone());
-		dest.writeString(getEmail());
+	public int getId() {
+		return id;
 	}
 	
 	public String getUsername() {
-		return mUsername;
+		return this.username;
 	}
 	
 	public void setUsername(String username) {		
-		mUsername = username;
-	}
-	
-	@Override
-	public int describeContents() {
-		return 0;
+		this.username = username;
 	}
 
 	public String getPassword() {
-		return mPassword;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
-		mPassword = password;
+		this.password = password;
 	}
 
 	public String getPhone() {
-		return mPhone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		mPhone = phone;
+		this.phone = phone;
 	}
 
 	public String getEmail() {
-		return mEmail;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		mEmail = email;
+		this.email = email;
 	}
 	
 }
