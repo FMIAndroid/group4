@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="users">
+        <item>@array/alice</item>
+    </array>
+    <array name="alice">
+        <item>alice</item> 					<!-- username -->>
+        <item>123</item>					<!-- password -->>
+        <item>alice@example.com</item>		<!-- email -->>
+        <item>555555555</item>				<!-- phone -->>
+        <item>true</item>					<!-- isAdmin -->>
+    </array>
+</resources>

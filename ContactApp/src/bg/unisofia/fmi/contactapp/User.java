@@ -1,33 +1,21 @@
 package bg.unisofia.fmi.contactapp;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "users")
 public class User {
 	
 	public static final String KEY = User.class.getSimpleName();
 	
-	@DatabaseField(generatedId = true, columnName = "_id")
-	private int id;
-	
-	@DatabaseField
 	private String username;
 	
-	@DatabaseField
 	private String password;
 	
-	@DatabaseField
 	private String phone;
 	
-	@DatabaseField
 	private String email;
 	
-	public User() {
-	}
+	private boolean isAdmin;
 	
-	public int getId() {
-		return id;
+	public User() {
 	}
 	
 	public String getUsername() {
@@ -60,6 +48,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }

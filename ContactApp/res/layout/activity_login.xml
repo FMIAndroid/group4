@@ -58,18 +58,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:text="Login"
-            android:visibility="gone"
             android:onClick="login" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="Register"
-            android:onClick="register"
-            android:visibility="gone" />
 
     </RelativeLayout>
 

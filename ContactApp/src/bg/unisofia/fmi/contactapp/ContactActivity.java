@@ -13,9 +13,6 @@ import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
-
 public class ContactActivity extends Activity implements OnLongClickListener {
 
 	private static final int PICK_PHOTO = 1;
