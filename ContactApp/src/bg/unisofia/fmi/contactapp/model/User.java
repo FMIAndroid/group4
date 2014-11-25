@@ -1,19 +1,19 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.model;
 
 
 public class User {
-	
-	public static final String KEY = User.class.getSimpleName();
-	
+		
 	private String username;
 	
 	private String password;
+	
+	private String fullName;
 	
 	private String phone;
 	
 	private String email;
 	
-	private boolean isAdmin;
+	private int imageResource;
 	
 	public User() {
 	}
@@ -50,12 +50,20 @@ public class User {
 		this.email = email;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public int getImageResource() {
+		return imageResource;
+	}
+
+	public void setImageResource(int imageResource) {
+		this.imageResource = imageResource;
 	}
 	
 }

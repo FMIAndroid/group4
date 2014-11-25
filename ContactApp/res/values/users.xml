@@ -6,8 +6,9 @@
     <array name="alice">
         <item>alice</item> 					<!-- username -->>
         <item>123</item>					<!-- password -->>
+        <item>Alice Hunter</item>
+        <item>@drawable/alice</item>
         <item>alice@example.com</item>		<!-- email -->>
         <item>555555555</item>				<!-- phone -->>
-        <item>true</item>					<!-- isAdmin -->>
     </array>
 </resources>

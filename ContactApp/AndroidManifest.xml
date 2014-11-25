@@ -23,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+         <activity
+            android:name=".UserListActivity"
+            android:label="@string/title_activity_contact" >
+        </activity>
         <activity
             android:name=".ContactActivity"
             android:label="@string/title_activity_contact" >
