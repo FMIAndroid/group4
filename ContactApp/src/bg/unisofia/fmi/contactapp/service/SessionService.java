@@ -55,6 +55,10 @@ public class SessionService {
 		preferences.registerOnSharedPreferenceChangeListener(listener);
 	}
 	
+	public void unregisterOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
+		preferences.unregisterOnSharedPreferenceChangeListener(listener);
+	}
+	
 	public void clear() {
 		preferences.edit().clear().commit();
 	}

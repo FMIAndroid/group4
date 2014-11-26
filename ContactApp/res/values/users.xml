@@ -2,6 +2,7 @@
 <resources>
     <array name="users">
         <item>@array/alice</item>
+        <item>@array/bob</item>
     </array>
     <array name="alice">
         <item>alice</item> 					<!-- username -->>
@@ -10,5 +11,13 @@
         <item>@drawable/alice</item>
         <item>alice@example.com</item>		<!-- email -->>
         <item>555555555</item>				<!-- phone -->>
+    </array>
+    <array name="bob">
+        <item>bob</item> 					
+        <item>123</item>					
+        <item>Bob Hunter</item>
+        <item>@drawable/bob</item>
+        <item>bob@example.com</item>		
+        <item>555555555</item>				
     </array>
 </resources>
