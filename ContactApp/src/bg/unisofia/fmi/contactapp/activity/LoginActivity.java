@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
 	@SuppressWarnings("unused")
 	private static final String TAG = LoginActivity.class.getSimpleName();
@@ -21,39 +21,26 @@ public class LoginActivity extends Activity {
 	private EditText usernameEditText;
 	private EditText passwordEditText;
 
-	private UserService userService;
-
-	private SessionService sessionService;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		usernameEditText = (EditText) findViewById(R.id.usernameEditText);
 		passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-		userService = new UserService(this);
-		sessionService = new SessionService(this);
 	}
 
 	public void login(View view) {
-		final User user = userService.login(usernameEditText.getText()
+		final User user = getUserService().login(usernameEditText.getText()
 				.toString(), passwordEditText.getText().toString());
 		if (user != null) {
 			Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
-			sessionService.setCurrentUser(user);
+			getSessionService().setCurrentUser(user);
 			final Intent intent = new Intent(this, UserListActivity.class);
 			startActivity(intent);
 		} else {
 			Toast.makeText(this, "Login failed", Toast.LENGTH_LONG).show();
 		}
 
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		userService = null;
-		sessionService = null;
 	}
 
 }

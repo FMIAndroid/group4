@@ -29,7 +29,7 @@ public class UserInfoFragment extends BaseFragment implements OnSharedPreference
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		fullNameView = (TextView) getView().findViewById(R.id.fullNameLabel);
+		fullNameView = (TextView) getView().findViewById(R.id.fullNameValue);
 		update();
 		getBaseActivity().getSessionService().registerOnSharedPreferenceChangeListener(this);
 	}
