@@ -1,5 +1,7 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.activity;
 
+import bg.unisofia.fmi.contactapp.R;
+import bg.unisofia.fmi.contactapp.R.layout;
 import android.content.res.Configuration;
 import android.os.Bundle;
 

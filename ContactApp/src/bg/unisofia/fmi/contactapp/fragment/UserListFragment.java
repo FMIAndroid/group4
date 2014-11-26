@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import bg.unisofia.fmi.contactapp.BaseFragment;
 import bg.unisofia.fmi.contactapp.R;
 import bg.unisofia.fmi.contactapp.UserListAdapter;
 

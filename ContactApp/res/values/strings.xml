@@ -4,5 +4,7 @@
     <string name="app_name">ContactApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_contact">ContactActivity</string>
+    <string name="activity_user_list_title">Users</string>
+    <string name="activity_user_info_title">User Information</string>
 
 </resources>

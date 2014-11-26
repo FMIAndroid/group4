@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bg.unisofia.fmi.contactapp.BaseFragment;
 import bg.unisofia.fmi.contactapp.R;
 import bg.unisofia.fmi.contactapp.model.User;
 import bg.unisofia.fmi.contactapp.service.SessionService;

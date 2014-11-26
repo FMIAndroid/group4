@@ -1,6 +1,9 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.activity;
 
 
+import bg.unisofia.fmi.contactapp.R;
+import bg.unisofia.fmi.contactapp.R.id;
+import bg.unisofia.fmi.contactapp.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;

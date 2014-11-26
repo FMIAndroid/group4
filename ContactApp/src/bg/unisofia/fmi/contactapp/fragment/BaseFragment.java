@@ -1,5 +1,6 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.fragment;
 
+import bg.unisofia.fmi.contactapp.activity.BaseActivity;
 import android.app.Fragment;
 
 public class BaseFragment extends Fragment {

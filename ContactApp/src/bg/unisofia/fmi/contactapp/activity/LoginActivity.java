@@ -1,5 +1,8 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.activity;
 
+import bg.unisofia.fmi.contactapp.R;
+import bg.unisofia.fmi.contactapp.R.id;
+import bg.unisofia.fmi.contactapp.R.layout;
 import bg.unisofia.fmi.contactapp.model.User;
 import bg.unisofia.fmi.contactapp.service.SessionService;
 import bg.unisofia.fmi.contactapp.service.UserService;

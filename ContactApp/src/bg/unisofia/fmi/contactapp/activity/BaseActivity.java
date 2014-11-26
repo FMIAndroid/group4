@@ -1,4 +1,4 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.activity;
 
 import android.app.Activity;
 import bg.unisofia.fmi.contactapp.service.SessionService;
