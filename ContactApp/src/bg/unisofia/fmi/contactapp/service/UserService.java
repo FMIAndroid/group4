@@ -3,12 +3,10 @@ package bg.unisofia.fmi.contactapp.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import bg.unisofia.fmi.contactapp.R;
-import bg.unisofia.fmi.contactapp.R.array;
-import bg.unisofia.fmi.contactapp.model.User;
-
 import android.content.Context;
 import android.content.res.TypedArray;
+import bg.unisofia.fmi.contactapp.R;
+import bg.unisofia.fmi.contactapp.model.User;
 
 public class UserService {
 	private ArrayList<User> users;
@@ -18,7 +16,8 @@ public class UserService {
 		final int count = userRes.length();
 		users = new ArrayList<User>(count);
 		for(int i = 0; i < count; ++i) {
-			final TypedArray userData = context.getResources().obtainTypedArray(userRes.getResourceId(i, 0));
+			final int userResId = userRes.getResourceId(i, 0);
+			final TypedArray userData = context.getResources().obtainTypedArray(userResId);
 			final User user = new User();
 			user.setUsername(userData.getString(0));
 			user.setPassword(userData.getString(1));
@@ -41,6 +40,10 @@ public class UserService {
 			}
 		}
 		return null;
+	}
+	
+	public User getUser(int index) {
+		return users.get(index);
 	}
 	
 	public List<User> getAllUsers() {

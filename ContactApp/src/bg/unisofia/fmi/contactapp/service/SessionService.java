@@ -3,6 +3,7 @@ package bg.unisofia.fmi.contactapp.service;
 import bg.unisofia.fmi.contactapp.model.User;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class SessionService {
 	
@@ -15,6 +16,8 @@ public class SessionService {
 	private static final String PHONE_KEY = "phone";
 	
 	private static final String FULL_NAME_KEY = "fullName";
+	
+	public static final String SELECTED_USER_INDEX = "selectedUserIndex";
 
 	private SharedPreferences preferences;
 
@@ -36,6 +39,20 @@ public class SessionService {
 		user.setPhone(preferences.getString(PHONE_KEY, ""));
 		user.setFullName(preferences.getString(FULL_NAME_KEY, ""));
 		return user;
+	}
+	
+	public void setSelectedUserIndex(int index) {
+		preferences.edit()
+			.putInt(SELECTED_USER_INDEX, index)
+			.commit();
+	}
+	
+	public int getSelectedUserIndex() {
+		return preferences.getInt(SELECTED_USER_INDEX, 0);
+	}
+	
+	public void registerOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
+		preferences.registerOnSharedPreferenceChangeListener(listener);
 	}
 	
 	public void clear() {
