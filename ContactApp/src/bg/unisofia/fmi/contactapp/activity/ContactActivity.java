@@ -1,9 +1,6 @@
 package bg.unisofia.fmi.contactapp.activity;
 
 
-import bg.unisofia.fmi.contactapp.R;
-import bg.unisofia.fmi.contactapp.R.id;
-import bg.unisofia.fmi.contactapp.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,6 +12,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bg.unisofia.fmi.contactapp.R;
 
 public class ContactActivity extends Activity implements OnLongClickListener {
 

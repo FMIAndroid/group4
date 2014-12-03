@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
     <fragment class="bg.unisofia.fmi.contactapp.fragment.UserListFragment"
-            android:id="@+id/user_list"
+            android:id="@+id/user_list_fragment"
             android:layout_width="300dp"
             android:layout_height="match_parent" />
     <fragment class="bg.unisofia.fmi.contactapp.fragment.UserInfoFragment"
             android:id="@+id/user_info"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/user_list" />
+            android:layout_toRightOf="@id/user_list_fragment" />
 </RelativeLayout>

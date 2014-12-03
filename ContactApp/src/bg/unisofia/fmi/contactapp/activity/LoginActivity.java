@@ -1,17 +1,12 @@
 package bg.unisofia.fmi.contactapp.activity;
 
-import bg.unisofia.fmi.contactapp.R;
-import bg.unisofia.fmi.contactapp.R.id;
-import bg.unisofia.fmi.contactapp.R.layout;
-import bg.unisofia.fmi.contactapp.model.User;
-import bg.unisofia.fmi.contactapp.service.SessionService;
-import bg.unisofia.fmi.contactapp.service.UserService;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import bg.unisofia.fmi.contactapp.R;
+import bg.unisofia.fmi.contactapp.model.User;
 
 public class LoginActivity extends BaseActivity {
 
