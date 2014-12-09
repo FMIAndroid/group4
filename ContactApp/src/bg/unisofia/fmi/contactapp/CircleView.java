@@ -26,7 +26,7 @@ public class CircleView extends ImageView {
 		rect.left = 0;
 		rect.bottom = 0;
 		rect.right = w;
-		rect.bottom = h;
+		rect.top = h;
 		path.reset();
 		path.addOval(rect, Direction.CW);
 	}
