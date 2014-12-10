@@ -1,9 +1,10 @@
 package bg.unisofia.fmi.contactapp.service;
 
-import bg.unisofia.fmi.contactapp.model.User;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+
+import bg.unisofia.fmi.contactapp.model.User;
 
 public class SessionService {
 	

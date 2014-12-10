@@ -1,10 +1,10 @@
-package bg.unisofia.fmi.contactapp;
+package bg.unisofia.fmi.contactapp.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
-import android.graphics.RectF;
 import android.graphics.Path.Direction;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 

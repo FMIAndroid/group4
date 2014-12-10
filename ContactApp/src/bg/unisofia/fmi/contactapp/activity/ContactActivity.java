@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import bg.unisofia.fmi.contactapp.R;
 
 public class ContactActivity extends Activity implements OnLongClickListener {

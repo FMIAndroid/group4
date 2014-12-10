@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import bg.unisofia.fmi.contactapp.R;
-import bg.unisofia.fmi.contactapp.UserListAdapter;
+import bg.unisofia.fmi.contactapp.adapter.UserListAdapter;
 
 public class UserListFragment extends BaseFragment implements TextWatcher {
 	

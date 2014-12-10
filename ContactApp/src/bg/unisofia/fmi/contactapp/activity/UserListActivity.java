@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+
 import bg.unisofia.fmi.contactapp.R;
 
 public class UserListActivity extends BaseActivity implements

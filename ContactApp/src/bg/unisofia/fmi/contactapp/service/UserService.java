@@ -1,10 +1,11 @@
 package bg.unisofia.fmi.contactapp.service;
 
+import android.content.Context;
+import android.content.res.TypedArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
-import android.content.res.TypedArray;
 import bg.unisofia.fmi.contactapp.R;
 import bg.unisofia.fmi.contactapp.model.User;
 

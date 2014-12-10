@@ -1,6 +1,7 @@
 package bg.unisofia.fmi.contactapp.activity;
 
 import android.app.Activity;
+
 import bg.unisofia.fmi.contactapp.service.SessionService;
 import bg.unisofia.fmi.contactapp.service.UserService;
 

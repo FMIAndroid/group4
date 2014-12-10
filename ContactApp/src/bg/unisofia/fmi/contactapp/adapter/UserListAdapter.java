@@ -1,8 +1,4 @@
-package bg.unisofia.fmi.contactapp;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+package bg.unisofia.fmi.contactapp.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +9,12 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import bg.unisofia.fmi.contactapp.R;
 import bg.unisofia.fmi.contactapp.model.User;
 
 public class UserListAdapter extends BaseAdapter implements Filterable{
