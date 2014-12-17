@@ -3,20 +3,17 @@ package bg.unisofia.fmi.contactapp.fragment;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import bg.unisofia.fmi.contactapp.R;
 import bg.unisofia.fmi.contactapp.adapter.NoteListAdapter;
-import bg.unisofia.fmi.contactapp.database.ContactAppContract;
 import bg.unisofia.fmi.contactapp.database.ContactAppDbHelper;
 import bg.unisofia.fmi.contactapp.model.Note;
 import bg.unisofia.fmi.contactapp.model.User;
@@ -46,7 +43,6 @@ public class UserInfoFragment extends BaseFragment implements
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		dbHelper = new ContactAppDbHelper(activity);
-		noteListAdapter = new NoteListAdapter(getActivity(), findNotes());
 	}
 
 	@Override
@@ -58,6 +54,7 @@ public class UserInfoFragment extends BaseFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		noteListAdapter = new NoteListAdapter(getActivity(), dbHelper.findNotesByUserId(getBaseActivity().getSessionService().getSelectedUserIndex()));
 		fullNameView = (TextView) getView().findViewById(R.id.fullNameValue);
 		noteListView = (ListView) getView().findViewById(R.id.noteList);
 		noteListView.setAdapter(noteListAdapter);
@@ -85,7 +82,7 @@ public class UserInfoFragment extends BaseFragment implements
 	}
 	
 	private void updateNotes() {
-		noteListAdapter.swapCursor(findNotes());
+		noteListAdapter.swapCursor(dbHelper.findNotesByUserId(getBaseActivity().getSessionService().getSelectedUserIndex()));
 	}
 
 	@Override
@@ -98,7 +95,6 @@ public class UserInfoFragment extends BaseFragment implements
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		noteListAdapter = null;
 		dbHelper.close();
 		dbHelper = null;
 	}
@@ -109,14 +105,8 @@ public class UserInfoFragment extends BaseFragment implements
 			Note note = new Note();
 			note.setUserId(getBaseActivity().getSessionService().getSelectedUserIndex());
 			note.setContent(noteEditText.getText().toString());
-			dbHelper.getWritableDatabase().insert(ContactAppContract.Note.TABLE_NAME, null, note.getContentValues());
+			dbHelper.insertNote(note);
 			updateNotes();
 		}
-	}
-	
-	private Cursor findNotes() {
-		return dbHelper.getReadableDatabase().query(
-				ContactAppContract.Note.TABLE_NAME, null, null, null, null,
-				null, null);
 	}
 }

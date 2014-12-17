@@ -1,8 +1,10 @@
 package bg.unisofia.fmi.contactapp.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import bg.unisofia.fmi.contactapp.model.Note;
 
 public class ContactAppDbHelper extends SQLiteOpenHelper{
 
@@ -30,6 +32,16 @@ public class ContactAppDbHelper extends SQLiteOpenHelper{
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL(SQL_DROP_NOTES);
 		onCreate(db);
+	}
+	
+	public void insertNote(Note note) {
+		getWritableDatabase().insert(ContactAppContract.Note.TABLE_NAME, null, note.getContentValues());
+	}
+	
+	public Cursor findNotesByUserId(int id) {
+		return getReadableDatabase().query(
+				ContactAppContract.Note.TABLE_NAME, null, String.format("%s = ?", ContactAppContract.Note.USER_ID), new String[]{Integer.toString(id)} , null,
+				null, null);
 	}
 
 }
