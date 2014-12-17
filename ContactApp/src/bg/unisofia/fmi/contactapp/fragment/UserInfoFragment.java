@@ -1,9 +1,14 @@
 package bg.unisofia.fmi.contactapp.fragment;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +23,8 @@ import bg.unisofia.fmi.contactapp.database.ContactAppDbHelper;
 import bg.unisofia.fmi.contactapp.model.Note;
 import bg.unisofia.fmi.contactapp.model.User;
 import bg.unisofia.fmi.contactapp.service.SessionService;
+import bg.unisofia.fmi.contactapp.service.android.SmsService;
+import bg.unisofia.fmi.contactapp.service.android.SmsServiceConnection;
 
 public class UserInfoFragment extends BaseFragment implements
 		OnSharedPreferenceChangeListener, OnClickListener {
